@@ -1,10 +1,17 @@
 package com.clipping.clipping;
 
-import jakarta.persistence.Entity;
 
-@Entity
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
+@RestController
+@RequestMapping
 public class ClippingModel {
 
+
+
+    private Long id;
     private String pesquisaNoticia;
     private int resultadosTotais;
     private String fonteNoticia;
@@ -13,22 +20,29 @@ public class ClippingModel {
     private String url;
     private String resumoCurto;
     private String autorNoticia;
-    private String citacaoNoticia;
 
 
     public ClippingModel() {
     }
 
-    public ClippingModel(String citacaoNoticia, String autorNoticia, String resumoCurto, String url, String dataNoticia, String tituloNoticia, String fonteNoticia, String pesquisaNoticia, int resultadosTotais) {
-        this.citacaoNoticia = citacaoNoticia;
-        this.autorNoticia = autorNoticia;
-        this.resumoCurto = resumoCurto;
-        this.url = url;
-        this.dataNoticia = dataNoticia;
-        this.tituloNoticia = tituloNoticia;
+    public ClippingModel(Long id,  String autorNoticia, String resumoCurto, String url, String dataNoticia, String tituloNoticia, String fonteNoticia, String pesquisaNoticia, int resultadosTotais) {
+        this.id = id;
         this.fonteNoticia = fonteNoticia;
+        this.url = url;
+        this.autorNoticia = autorNoticia;
+        this.dataNoticia = dataNoticia;
+        this.resumoCurto = resumoCurto;
+        this.tituloNoticia = tituloNoticia;
         this.pesquisaNoticia = pesquisaNoticia;
         this.resultadosTotais = resultadosTotais;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public int getResultadosTotais() {
@@ -38,6 +52,7 @@ public class ClippingModel {
     public void setResultadosTotais(int resultadosTotais) {
         this.resultadosTotais = resultadosTotais;
     }
+
     public String getPesquisaNoticia() {
         return pesquisaNoticia;
     }
@@ -94,12 +109,5 @@ public class ClippingModel {
         this.autorNoticia = autorNoticia;
     }
 
-    public String getCitacaoNoticia() {
-        return citacaoNoticia;
-    }
-
-    public void setCitacaoNoticia(String citacaoNoticia) {
-        this.citacaoNoticia = citacaoNoticia;
-    }
 
 }
