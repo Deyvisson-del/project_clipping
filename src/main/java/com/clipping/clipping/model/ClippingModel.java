@@ -1,46 +1,54 @@
-package com.clipping.clipping;
+package com.clipping.clipping.model;
 
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-
-@RestController
-@RequestMapping
 @Entity
-@Table()
+@Table(name = "tb_clipping")
 public class ClippingModel {
 
-
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String pesquisaNoticia;
-    private int resultadosTotais;
-    private String fonteNoticia;
-    private String tituloNoticia;
-    private String dataNoticia;
-    private String url;
-    private String resumoCurto;
+
+    @Column(name = "title_noticia", nullable = false, length = 500)
+    private String titleNoticia;
+
+    @Column(name = "autor_noticia", length = 100)
     private String autorNoticia;
 
+    @Column(name = "url", nullable = false, columnDefinition = "TEXT")
+    private String url;
 
+    @Column(name = "fonte_noticia", length = 100)
+    private String fonteNoticia;
+
+    @Column(name = "data_publicacao")
+    private LocalDateTime dataPublicacao;
+
+    @Column(name = "data_busca", nullable = false)
+    private LocalDateTime dataBusca = LocalDateTime.now();
+
+    @Column(name = "palavra_busca", nullable = false, length = 100)
+    private String palavraBusca;
+
+    // Construtor padrão
     public ClippingModel() {
     }
 
-    public ClippingModel(Long id,  String autorNoticia, String resumoCurto, String url, String dataNoticia, String tituloNoticia, String fonteNoticia, String pesquisaNoticia, int resultadosTotais) {
-        this.id = id;
-        this.fonteNoticia = fonteNoticia;
-        this.url = url;
+    // Construtor com parâmetros
+    public ClippingModel(String titleNoticia, String autorNoticia, String url,
+                         String fonteNoticia, LocalDateTime dataPublicacao,
+                         String palavraBusca) {
+        this.titleNoticia = titleNoticia;
         this.autorNoticia = autorNoticia;
-        this.dataNoticia = dataNoticia;
-        this.resumoCurto = resumoCurto;
-        this.tituloNoticia = tituloNoticia;
-        this.pesquisaNoticia = pesquisaNoticia;
-        this.resultadosTotais = resultadosTotais;
+        this.url = url;
+        this.fonteNoticia = fonteNoticia;
+        this.dataPublicacao = dataPublicacao;
+        this.palavraBusca = palavraBusca;
     }
 
+    // Getters e Setters
     public Long getId() {
         return id;
     }
@@ -49,60 +57,12 @@ public class ClippingModel {
         this.id = id;
     }
 
-    public int getResultadosTotais() {
-        return resultadosTotais;
+    public String getTitleNoticia() {
+        return titleNoticia;
     }
 
-    public void setResultadosTotais(int resultadosTotais) {
-        this.resultadosTotais = resultadosTotais;
-    }
-
-    public String getPesquisaNoticia() {
-        return pesquisaNoticia;
-    }
-
-    public void setPesquisaNoticia(String pesquisaNoticia) {
-        this.pesquisaNoticia = pesquisaNoticia;
-    }
-
-    public String getFonteNoticia() {
-        return fonteNoticia;
-    }
-
-    public void setFonteNoticia(String fonteNoticia) {
-        this.fonteNoticia = fonteNoticia;
-    }
-
-    public String getTituloNoticia() {
-        return tituloNoticia;
-    }
-
-    public void setTituloNoticia(String tituloNoticia) {
-        this.tituloNoticia = tituloNoticia;
-    }
-
-    public String getDataNoticia() {
-        return dataNoticia;
-    }
-
-    public void setDataNoticia(String dataNoticia) {
-        this.dataNoticia = dataNoticia;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getResumoCurto() {
-        return resumoCurto;
-    }
-
-    public void setResumoCurto(String resumoCurto) {
-        this.resumoCurto = resumoCurto;
+    public void setTitleNoticia(String titleNoticia) {
+        this.titleNoticia = titleNoticia;
     }
 
     public String getAutorNoticia() {
@@ -113,5 +73,43 @@ public class ClippingModel {
         this.autorNoticia = autorNoticia;
     }
 
+    public String getUrl() {
+        return url;
+    }
 
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getFonteNoticia() {
+        return fonteNoticia;
+    }
+
+    public void setFonteNoticia(String fonteNoticia) {
+        this.fonteNoticia = fonteNoticia;
+    }
+
+    public LocalDateTime getDataPublicacao() {
+        return dataPublicacao;
+    }
+
+    public void setDataPublicacao(LocalDateTime dataPublicacao) {
+        this.dataPublicacao = dataPublicacao;
+    }
+
+    public LocalDateTime getDataBusca() {
+        return dataBusca;
+    }
+
+    public void setDataBusca(LocalDateTime dataBusca) {
+        this.dataBusca = dataBusca;
+    }
+
+    public String getPalavraBusca() {
+        return palavraBusca;
+    }
+
+    public void setPalavraBusca(String palavraBusca) {
+        this.palavraBusca = palavraBusca;
+    }
 }
