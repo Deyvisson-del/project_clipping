@@ -1,4 +1,4 @@
 package com.clipping.clipping.repository;
 
-public interface UsuarioRepository {
+public interface ClippingRepository {
 }
