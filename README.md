@@ -4,7 +4,10 @@
 
 
 # Stacks(tools)
-* Java
+* Java ms-17(Microsoft OpenJDK 17.0.15)
 * Spring Boot
-* ChatGPT
+* MySql (8.0.42)
+* MySql (mysql-workbench-communitywinx64.msi)
 * Figma
+* ChatGPT
+* DeepSeek
