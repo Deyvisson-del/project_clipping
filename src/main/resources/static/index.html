@@ -1,10 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <title>Buscador Livre</title>
 </head>
+
+<style>
+    body {
+        background-color: black;
+    }
+
+    * {
+        font-family: Arial;
+    }
+
+    input {
+        padding: 4%, 4%;
+    }
+
+    .titulo {
+        color: #FFFDFD;
+        text-align: center;
+    }
+
+    /* button{
+        background-color: green;
+        border-radius: 9px;
+        padding: 1% 2%;
+        border: solid white 1px;
+    } */
+
+    label {
+        color: white;
+        font-size: 2rem;
+    }
+
+    .efect-shadow {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 9px;
+    }
+
+    .efect-shadow:hover {
+        border-radius: 9px;
+        transform: scale(1.1);
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .botton {
+        color: #FFFDFD;
+        text-decoration: none;
+        display: flex;
+        font-size: 2rem;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(45deg, #2575fc, #00A5c5);
+        padding: 3% 0% 3% 0%;
+        border-radius: 20px 0 20px 0;
+        cursor: pointer;
+        border: none;
+        margin: 5% 5%;
+        overflow: hidden;
+    }
+
+
+    .botton:hover {
+        opacity: 0.8;
+        text-decoration: underline #FFFDFD;
+    }
+</style>
+
 <body>
-$END$
+
+    <h1 class="titulo">Clippa</h1>
+
+    <label for="termoBusca">Qual o clipping de hoje?</label>
+    <input type="text" id="termoBusca" placeholder="Digite uma palavra...">
+    <button class="botton efect-shadow" onclick="buscar()">Buscar</button>
+    <a href="resultados.html" class="botton efect-shadow">Ver resultados</a>
+
+    <div id="resultados"></div>
+
+    <script>
+        async function buscar() {
+            const termo = document.getElementById('termoBusca').value;
+            const response = await fetch(`/api/buscar?termo=${termo}`);
+            const noticias = await response.json();
+
+            let html = '<table border="1"><tr><th>Título</th><th>Fonte</th></tr>';
+
+            noticias.forEach(noticia => {
+                html += `<tr>
+                <td><a href="${noticia.url}" target="_blank">${noticia.titulo}</a></td>
+                <td>${noticia.fonte}</td>
+            </tr>`;
+            });
+
+            document.getElementById('resultados').innerHTML = html + '</table>';
+        }
+    </script>
 </body>
+
 </html>
