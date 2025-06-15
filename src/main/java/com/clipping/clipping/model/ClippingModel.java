@@ -1,12 +1,16 @@
 package com.clipping.clipping;
 
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
 @RequestMapping
+@Entity
+@Table()
 public class ClippingModel {
 
 
