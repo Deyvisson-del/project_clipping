@@ -4,7 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Resultados da Busca</title>
+    <link rel="shortcut icon" href="./image/lupa.png" type="image/x-icon">
     <style>
+         body {
+        background-color: black;
+    }
+     * {
+        border: 1px red solid;
+        font-family: Arial;
+        margin: 0;
+        padding: 0;
+    }
+    .titulo{
+        margin: 3%;
+    }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -45,11 +58,11 @@
             justify-content: center;
             align-items: center;
             background: linear-gradient(45deg, #2575fc, #00A5c5);
-            padding: 3% 0% 3% 0%;
+            padding: 1% 0% 1% 0%;
             border-radius: 20px 0 20px 0;
             cursor: pointer;
             border: none;
-            margin: 5% 5%;
+             margin: 5%; 
             overflow: hidden;
         }
 
@@ -58,11 +71,51 @@
             opacity: 0.8;
             text-decoration: underline #FFFDFD;
         }
+        
+        .botton1 {
+            color: #FFFDFD;
+            text-decoration: none;
+            display: flex;
+            font-size: 2rem;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #720101, #f00202);
+            padding: 1% 0% 1% 0%;
+            border-radius: 20px 0 20px 0;
+            cursor: pointer;
+            border: none;
+             margin: 5%; 
+            overflow: hidden;
+        }
+
+
+        .botton1:hover {
+            opacity: 0.8;
+            text-decoration: underline #FFFDFD;
+        }
+
+         .titulo {
+        color: #FFFDFD;
+        text-align: center;
+    }
+
+     .style-button3{
+        margin-top: 1%;
+        margin: 5%;
+        color: #FFFDFD;
+        background: linear-gradient(45deg, #850303e7, #e60303ef);
+        border: none;
+        padding: 5%;
+    }
+     .container{
+        display: flex;
+        justify-content: center;
+    }
     </style>
 </head>
 
 <body>
-    <h1>Resultados para: <span th:text="${palavraBusca}"></span></h1>
+    <h1 class="titulo">Resultados para: <span th:text="${palavraBusca}"></span></h1>
 
     <table>
         <thead>
@@ -84,8 +137,11 @@
             </tr>
         </tbody>
     </table>
-
+<div class="container">
     <a href="index.html" class="botton efect-shadow">Voltar pesquisa</a>
+    <a href="index.html" class="botton1 efect-shadow">Exportar PDF</a>
+    
+</div>
 </body>
 
 </html>
