@@ -1,6 +1,6 @@
-# Projeto Clipping
+# ⚙️📰Projeto Clipping
 
-### É um projeto para fazer buscas otimizadas, listando: URLs, Data, Fonte.
+### É um projeto para fazer buscas otimizadas de noticias, listando: URLs, Data, Fonte.
 
 
 # Stacks(tools)
@@ -11,3 +11,4 @@
 * Figma
 * ChatGPT
 * DeepSeek
+* API newsapi.org
