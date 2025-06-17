@@ -1,4 +1,4 @@
-# ⚙️📰Projeto Clipping
+# ⚙️📰Projeto ClippNews
 
 ### É um projeto para fazer buscas otimizadas de noticias, listando: URLs, Data, Fonte.
 
